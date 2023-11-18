@@ -4,7 +4,7 @@
 cd
 sudo yum update -y
 # install docker + git
-sudo yum install docker git npm -y
+sudo yum install docker git -y
 sleep 2
 # instala o docker-compose
 sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
