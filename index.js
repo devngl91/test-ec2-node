@@ -6,4 +6,4 @@ app.get('/', (req, res) => {
 	res.send('My node-express Docker!')
 })
 
-app.listen(4001)
+app.listen(3000)
