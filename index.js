@@ -7,6 +7,14 @@ app.get('/', (req, res) => {
 	res.send('My node-express Docker! V1.0')
 })
 
+app.get('/1', (req, res) => {
+	res.send('ROTA 1')
+})
+
+app.get('/2', (req, res) => {
+	res.send('ROTA 2')
+})
+
 app.get('/test', (req, res) => {
 	res.send(`resposta : ${process.env.TEST_ENV}`)
 })

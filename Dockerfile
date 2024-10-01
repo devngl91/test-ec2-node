@@ -1,5 +1,7 @@
 # Baixa a imagem do node com versão alpine (versão mais simplificada e leve)
-FROM node:alpine
+#FROM node:alpine
+# FROM --platform=linux/ARM64 node:alpine
+FROM --platform=linux/x86_64 node:alpine
 
 # Cria pasta e define o local onde o app vai ficar no disco do container
 RUN mkdir -p /usr/app
