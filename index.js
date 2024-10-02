@@ -4,7 +4,7 @@ const express = require('express')
 const app = express()
 
 app.get('/', (req, res) => {
-	res.send('My node-express Docker! V1.5')
+	res.send('My node-express Docker! V1.6')
 })
 
 app.get('/1', (req, res) => {
@@ -12,6 +12,10 @@ app.get('/1', (req, res) => {
 })
 
 app.get('/2', (req, res) => {
+	res.send('ROTA 2')
+})
+
+app.get('/3', (req, res) => {
 	res.send('ROTA 2')
 })
 
