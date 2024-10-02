@@ -6,17 +6,10 @@ on:
 
 # SETUP TO SYNC AWS
 env:
-  # AWS_REGION: us-east-1 # region      
-  # ECR_REPOSITORY: ecr-test-ec2 # repo
-  # ECS_SERVICE: service-xxxxx # service
-  # ECS_CLUSTER: testxxxx # cluster
-  # ECS_TASK_DEFINITION: .aws/task-definition.json # definitions for container
-  # CONTAINER_NAME: container-1 # name of container
-
   AWS_REGION: us-east-1 # region      
-  ECR_REPOSITORY: ecr-producer-intercom # repo
-  ECS_SERVICE: service-producer-intercom # service
-  ECS_CLUSTER: cluster-producer-intercom # cluster
+  ECR_REPOSITORY: ecr-test-ec2 # repo
+  ECS_SERVICE: service-xxxxx # service
+  ECS_CLUSTER: testxxxx # cluster
   ECS_TASK_DEFINITION: .aws/task-definition.json # definitions for container
   CONTAINER_NAME: container-1 # name of container
 
