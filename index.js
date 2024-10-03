@@ -23,4 +23,5 @@ app.get('/test', (req, res) => {
 	res.send(`resposta : ${process.env.TEST_ENV}`)
 })
 
+// port que externaliza a aplicação do ( CONTAINER )
 app.listen(80)
