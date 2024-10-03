@@ -4,7 +4,7 @@ const express = require('express')
 const app = express()
 
 app.get('/', (req, res) => {
-	res.send('My node-express Docker! V1.7')
+	res.send('My node-express Docker! V1.8')
 })
 
 app.get('/1', (req, res) => {
