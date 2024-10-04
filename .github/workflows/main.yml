@@ -2,19 +2,22 @@ name: CustomDeployAWS-Docker
 
 on:
   push:
-    branches: ['main'] # branch
+    branches: ['main'] # PODE ALTERAR A BRANCH
 
-# SETUP TO SYNC AWS
+#####################
+# SETUP TO SYNC AWS #
+#####################
 env:
-  AWS_REGION: us-east-1 # region      
-  ECR_REPOSITORY: ecr-test-ec2 # repo
-  ECS_SERVICE: service-asd # service
-  ECS_CLUSTER: testxxxx # cluster
-  ECS_TASK_DEFINITION: .aws/task-definition.json # definitions for container
-  CONTAINER_NAME: container-1 # name of container
+  AWS_REGION: us-east-1 # NÃO ALTERAR
+  ECR_REPOSITORY: ecr-test-ec2 # NÃO ALTERAR
+  ECS_SERVICE: NEW # NÃO ALTERAR
+  ECS_CLUSTER: NEW # NÃO ALTERAR
+  ECS_TASK_DEFINITION: .aws/task-definition.json # NÃO ALTERAR
+  CONTAINER_NAME: pod # NÃO ALTERAR
 
+#####################
 
-# NO CHANGE BELLOW
+# NÃO ALTERAR
 permissions:
   contents: read
 
@@ -53,7 +56,7 @@ jobs:
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: ${{ env.ECS_TASK_DEFINITION }}
+        # task-definition: ${{ env.ECS_TASK_DEFINITION }}
         container-name: ${{ env.CONTAINER_NAME }}
         image: ${{ steps.build-image.outputs.image }}
 
