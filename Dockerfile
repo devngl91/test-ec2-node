@@ -8,9 +8,9 @@ FROM --platform=linux/arm64 node:alpine
 WORKDIR /usr/app
 
 # Atualiza as dependencias + add git + bash
-RUN apk update && apk upgrade
-RUN apk add git
-RUN apk add bash
+# RUN apk update && apk upgrade
+# RUN apk add git
+# RUN apk add bash
 
 # Copia tudo que começa com package e termina com .json para dentro da pasta /usr/app
 COPY package*.json ./
