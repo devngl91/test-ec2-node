@@ -4,7 +4,7 @@ FROM --platform=linux/arm64 node:alpine
 # FROM --platform=linux/x86_64 node:alpine
 
 # Cria pasta e define o local onde o app vai ficar no disco do container
-RUN mkdir -p /usr/app
+# RUN mkdir -p /usr/app
 WORKDIR /usr/app
 
 # Atualiza as dependencias + add git + bash
