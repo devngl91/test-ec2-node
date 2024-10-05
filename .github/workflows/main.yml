@@ -1,23 +1,26 @@
-name: CustomDeployAWS-Docker
+name: ClusterDeployAWSDockerPods
 
+# USAR APENAS 2 BRANCHS ( Prod ) ( Dev )
 on:
   push:
-    branches: ['main'] # PODE ALTERAR A BRANCH
+    branches: ['main', 'dev']
 
-#####################
-# SETUP TO SYNC AWS #
-#####################
+#####################################
+#####################################
+# NÃO ALTERAR ABAIXO A PARTIR DAQUI #
+#####################################
+#####################################
+
 env:
-  AWS_REGION: us-east-1 # NÃO ALTERAR
-  ECR_REPOSITORY: ecr-test-ec2 # NÃO ALTERAR
-  ECS_SERVICE: NEW # NÃO ALTERAR
-  ECS_CLUSTER: NEW # NÃO ALTERAR
-  ECS_TASK_DEFINITION: .aws/task-definition.json # NÃO ALTERAR
-  CONTAINER_NAME: pod # NÃO ALTERAR
+  AWS_REGION: us-east-1
+  ECS_CLUSTER: NEW
+  ECR_REPOSITORY: ${{ github.ref == 'refs/heads/main' && 'ecr-test-ec2' || 'DEV_ecr-test-ec2' }}
+  ECS_SERVICE: ${{ github.ref == 'refs/heads/main' && 'NEW' || 'DEV_NEW' }}
+  ECS_TASK_DEFINITION: .aws/task-definition.json
+  CONTAINER_NAME: pod
+  WAIT_STABILITY: false # true : wait finish all pods updates | false : no wait finish pods updates ( to finish gitAction )
 
-#####################
 
-# NÃO ALTERAR
 permissions:
   contents: read
 
@@ -66,4 +69,4 @@ jobs:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: ${{ env.ECS_SERVICE }}
         cluster: ${{ env.ECS_CLUSTER }}
-        wait-for-service-stability: true
+        wait-for-service-stability: ${{ env.WAIT_STABILITY }}
