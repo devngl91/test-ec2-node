@@ -1,3 +1,25 @@
+# name: ClusterDeployAWSDockerPods
+
+# # USAR APENAS 2 BRANCHS ( Prod ) ( Dev )
+# on:
+#   push:
+#     branches: ['main', 'dev']
+
+# #####################################
+# #####################################
+# # NÃO ALTERAR ABAIXO A PARTIR DAQUI #
+# #####################################
+# #####################################
+
+# env:
+#   AWS_REGION: us-east-1
+#   ECS_CLUSTER: NEW
+#   ECR_REPOSITORY: ${{ github.ref == 'refs/heads/main' && 'ecr-test-ec2' || 'DEV_ecr-test-ec2' }}
+#   ECS_SERVICE: ${{ github.ref == 'refs/heads/main' && 'NEW' || 'DEV_NEW' }}
+#   ECS_TASK_DEFINITION: .aws/task-definition.json
+#   CONTAINER_NAME: pod
+#   WAIT_STABILITY: true # recomendo TRUE, mas pode setar FALSE se quiser nao ter feedback de updates da AWS
+
 name: ClusterDeployAWSDockerPods
 
 # USAR APENAS 2 BRANCHS ( Prod ) ( Dev )
@@ -5,20 +27,26 @@ on:
   push:
     branches: ['main', 'dev']
 
+env:
+  AWS_REGION: us-east-1
+  ECS_CLUSTER: painel-py-core
+  
+  # utilizando o { main } como production, so mude o nome { main } no refs/heads/main
+  ECR_REPOSITORY: ${{ github.ref == 'refs/heads/main' && '$ECS_CLUSTER' || 'dev_$ECS_CLUSTER' }}
+  ECS_SERVICE: ${{ github.ref == 'refs/heads/main' && '$ECS_CLUSTER' || 'dev_$ECS_CLUSTER' }}
+  ECS_TASK_DEFINITION: .aws/task-definition.json
+  CONTAINER_NAME: pod
+
+  # recomendo TRUE, mas pode setar FALSE se quiser nao ter feedback de updates da AWS
+  WAIT_STABILITY: true 
+
+
+
 #####################################
 #####################################
 # NÃO ALTERAR ABAIXO A PARTIR DAQUI #
 #####################################
 #####################################
-
-env:
-  AWS_REGION: us-east-1
-  ECS_CLUSTER: NEW
-  ECR_REPOSITORY: ${{ github.ref == 'refs/heads/main' && 'ecr-test-ec2' || 'DEV_ecr-test-ec2' }}
-  ECS_SERVICE: ${{ github.ref == 'refs/heads/main' && 'NEW' || 'DEV_NEW' }}
-  ECS_TASK_DEFINITION: .aws/task-definition.json
-  CONTAINER_NAME: pod
-  WAIT_STABILITY: false # true : wait finish all pods updates | false : no wait finish pods updates ( to finish gitAction )
 
 
 permissions:
