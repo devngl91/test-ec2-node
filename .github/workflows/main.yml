@@ -32,8 +32,8 @@ env:
   ECS_CLUSTER: painel-py-core
   
   # utilizando o { main } como production, so mude o nome { main } no refs/heads/main
-  ECR_REPOSITORY: ${{ github.ref == 'refs/heads/main' && '$ECS_CLUSTER' || 'dev_$ECS_CLUSTER' }}
-  ECS_SERVICE: ${{ github.ref == 'refs/heads/main' && '$ECS_CLUSTER' || 'dev_$ECS_CLUSTER' }}
+  ECR_REPOSITORY: ${{ github.ref == 'refs/heads/main' && 'painel-py-core' || 'dev_painel-py-core' }}
+  ECS_SERVICE: ${{ github.ref == 'refs/heads/main' && 'painel-py-core' || 'dev_painel-py-core' }}
   ECS_TASK_DEFINITION: .aws/task-definition.json
   CONTAINER_NAME: pod
 
